@@ -57,4 +57,3 @@ mongoose.connect(process.env.DB_CONNECT, {
     console.log("Connected to DB")
     app.listen(4000, () => console.log("Server is live"));
 });
-// http://localhost:4000/

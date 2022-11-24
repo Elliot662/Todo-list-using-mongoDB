@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Georgia" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+ </head>
+
+<body>
+    <div class="todo-container">
+        <h2>App to host your todo list</h2>
+        <div class="todo">
+            <form action="" method="POST" class="todo-header">
+                <input type="text" name="content">
+                <button type="submit">Submit</button>
+            </form>
+            <ul class="todo-list">
+                <% todoTasks.forEach(details=> { %>
+                    <% if (details._id==idTask) { %>
+                        <li class="todo-list-item">
+                            <form action="/edit/<%= details._id %>" method="POST">
+                                <input type="text" value="<%= details.content %>" name="content">
+                                <button type="submit">Confirm</button>
+                                <a href="/" class="cancel"><button>Cancel</button></a>
+                            </form>
+                        </li>
+                        <% } else { %>
+                            <li class="todo-list-item">
+                                <div class="todo-list-item-name">
+                                    <%= details.content %>
+                                </div>
+                                <a href="/edit/<%= details._id %>" class="edit"><button>Edit</button>
+                                </a>
+                                <a href="/remove/<%= details._id %>" class="remove"><button>Delete</button>
+                                </a>
+                            </li>
+                            <% } %>
+                                <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
